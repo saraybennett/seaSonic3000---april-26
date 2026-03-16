@@ -1,0 +1,16 @@
+{
+  "name": "seasonic3000---april-26",
+  "version": "1.0.0",
+  "description": "seaSonic3000 website for april show",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sara , katie",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "save": "^2.9.0",
+    "ws": "^8.19.0"
+  }
+}

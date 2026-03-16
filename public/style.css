@@ -1,0 +1,156 @@
+html,
+body {
+  /* background: linear-gradient(to bottom, rgba(122, 122, 223), rgb(13, 3, 43)); */
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  margin: 0;
+  /* background-image: url("./images/background.jpeg"); */
+  background: radial-gradient(
+    circle at top left,
+    rgba(122, 122, 223),
+    rgb(2, 1, 6) 50%
+  );
+  /* background: linear-gradient(45deg, rgba(122, 122, 223), rgb(2, 1, 6)); */
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  cursor: default;
+  /* had to change this back to default so there was a cursor for the intiial welcome pages */
+}
+
+p {
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 15px;
+}
+
+h1 {
+  font-family: "Genos", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-align: justify;
+}
+
+.heading {
+  position: absolute;
+  /* top: 110px;
+  left: 150px; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 100; */
+  max-width: 500px;
+  position: fixed;
+  background-color: rgb(165, 196, 219, 0.7);
+  padding: 24px;
+  /* border: 2px solid white; */
+  border-radius: 8px;
+  /* box-shadow: 10px 5px 5px white; */
+  display: flex;
+  flex-direction: column;
+  /* font-optical-sizing: auto; */
+  font-size: 25px;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+}
+
+.cursor {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  pointer-events: none;
+  transform: translate(-50%, -50%); /* Center the cursor on the coordinates */
+  /* opacity: 0.8; */
+  transition: all 0.1s ease; /* Smooth movement */
+  z-index: 99; /*Ensure cursors appear on top*/
+}
+/* 
+.creature-img {
+  position: absolute;
+  height: auto;
+  transition: transform 0.3s ease; 
+  
+} */
+
+.sea-creature-pictures {
+  display: grid;
+  width: 100%;
+  height: auto;
+  /* Automatically adjust the number of columns based on screen size */
+  /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+  grid-template-columns: repeat(4, 1fr);
+  /* Creates 3 rows with a minimum height of 200px (adjust as needed) */
+  grid-template-rows: repeat(3, minmax(200px, auto));
+  gap: 20px; /* Spacing between images */
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto; /* Center the gallery on the page */
+}
+
+.sea-creature-pictures img {
+  width: 100%; /* Ensure images fill their grid cell */
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain; /* Ensures images keep aspect ratio and cover the area, might clip some parts */
+}
+
+.creature-img:hover {
+  transform: scale(1.1) !important; /* Slightly enlarges on hover */
+  cursor: pointer;
+}
+
+.logo-id {
+  display: flex; /* Makes the container a flex container */
+  justify-content: center; /* Centers horizontally */
+  height: 280px; /* Example: Centers within the full viewport height */
+}
+
+@keyframes pulse-and-float {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+  25% {
+    transform: scale(1.15) translateY(-15px);
+    filter: drop-shadow(0 0 25px rgba(100, 200, 255, 0.8));
+  }
+  50% {
+    transform: scale(1.2) translateY(-20px) rotate(5deg);
+    filter: drop-shadow(0 0 35px rgba(100, 200, 255, 1));
+  }
+  75% {
+    transform: scale(1.15) translateY(-15px);
+    filter: drop-shadow(0 0 25px rgba(100, 200, 255, 0.8));
+  }
+}
+
+.creature-img.playing {
+  animation: pulse-and-float 2s ease-in-out infinite;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .sea-creature-pictures {
+    display: flex;
+    flex-direction: column; /* Stacks images vertically */
+    align-items: center;
+    grid-template-columns: none; /* Disables the 4-column desktop grid */
+  }
+
+  .sea-creature-pictures img {
+    max-width: 90%; /* Prevents images from hitting screen edges */
+    height: auto; /* Maintains aspect ratio */
+  }
+
+  .heading {
+    width: 80%; /* Makes the center box fit better on small screens */
+    font-size: 18px;
+  }
+}
