@@ -48,6 +48,7 @@ const serverState = {
   //is jellyfish on?
   jellyOn: false,
   anglerOn: false,
+  servoAngle: 90, //initial angle for the servo motor - this is the one that controls the jellyfish movement
 
   // Example 2 state - REMOVE if we don't need
   //   brightness: 128,
@@ -143,9 +144,12 @@ wss.on("connection", (ws, req) => {
         }
         if (data.name === "jelly") {
           console.log("jelly clicked");
-          serverState.jellyOn = !serverState.jellyOn; //toggle the led state
+          serverState.jellyOn = !serverState.jellyOn; //toggle the jelly state
           console.log("Jelly toggled to:", serverState.jellyOn);
-          //figure out what we want/need to broadcast here to the client/arduino - this is working for the most part but seems a bit glitchy
+          // send a servo command to Arduino when jelly is clicked
+          serverState.servoAngle = serverState.jellyOn ? 120 : 90;
+          broadcast({ type: "servo", value: serverState.servoAngle });
+          // keep the jellyState broadcast if other clients or UI depend on it
           broadcast({ type: "jellyState", value: serverState.jellyOn });
         }
       }
